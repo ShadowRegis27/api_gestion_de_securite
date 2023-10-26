@@ -177,6 +177,19 @@ class UtilisateurController extends Controller
             "message"=>"Deconnexion réussie"
         ]);
     }
+    public function etu()
+    {
+        $utilisateur = Utilisateur::where('id_Role_Utilisateur',3)->get();
+        if($utilisateur)
+        {
+                return response()->json([
+                    "utilisateurs"=>$utilisateur,
+                    "status"=>200
+
+                ]);
+
+        }
+    }
 }
 
 

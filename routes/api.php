@@ -32,6 +32,10 @@ Route::group(['middleware'=>['auth:sanctum']],function(){
     //Afficher tout les utilisateurs
     Route::get('/utilisateur/index/{id}',[UtilisateurController::class,"index"]);
     //
+    //Route::post('/utilisateur/createetudiant', [UtilisateurController::class,"create"]);
+    //
+    Route::get('/utilisateur/etudiant', [UtilisateurController::class, 'etu']);
+    //
 
     Route::get('/utilisateur/logout', [UtilisateurController::class, 'logout']);
 //
