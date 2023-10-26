@@ -15,12 +15,13 @@ class UtilisateurController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        $utilisateur= Utilisateur::all();
+        $utilisateur= Utilisateur::where("id_Utilisateur",'!=' ,$id)->get();;
         return response()->json([
             'utilisateur'=> $utilisateur,
-            'status'=>200
+            'status'=>200,
+            'id_courant'=>$id
         ]);
     }
 
@@ -126,9 +127,9 @@ class UtilisateurController extends Controller
             $utilisateur->delete();
             return response()->json(
                 [
-                    "statut"=>1,
+                    "status"=>200,
                 "message"=>"Utilisateur a été supprimer"
-                ],200
+                ]
             );
         }
     }
@@ -146,6 +147,7 @@ class UtilisateurController extends Controller
                 return response()->json([
                     'status'=>200,
                     'message'=>"Connection success",
+                    'id_u'=>$utilisateur->id_Utilisateur,
                     'nom'=>$utilisateur->name,
                     'access_token'=>$token
                 ],200)->cookie('jwt',$token);

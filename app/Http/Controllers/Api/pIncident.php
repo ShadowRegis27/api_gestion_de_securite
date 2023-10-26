@@ -41,17 +41,16 @@ class pIncident extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        $prioriteincident = PrioriteIncident::where("id_Priorite_Incident",$id)->get();
+        $prioriteincident = PrioriteIncident::where("id_Priorite_Incident",$id)->first();
 
         if($prioriteincident)
         {
             return response()->json([
-                "statu"=>1,
-                "message"=>"prioriteincident trouvée",
-                "data"=> $prioriteincident
-            ],200,);
+                "status"=>200,
+                "pi"=> $prioriteincident
+            ]);
         }
     }
 

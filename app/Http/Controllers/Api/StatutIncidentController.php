@@ -40,15 +40,14 @@ class StatutIncidentController extends Controller
     public function show( $id)
     {
         // API Fonction d'affichage d'un statut d'incident
-        $statuIncident = StatuIncident::where("id_Statut_Incident",$id)->get();
+        $statuIncident = StatuIncident::where("id_Statut_Incident",$id)->first();
 
         if($statuIncident)
         {
             return response()->json([
-                "statut"=>1,
-                "message"=>"Statut d'incident trouvée",
-                "data"=> $statuIncident
-            ],200,);
+                "status"=>200,
+                "sa"=> $statuIncident
+            ]);
         }
     }
 

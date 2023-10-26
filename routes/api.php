@@ -29,9 +29,8 @@ Route::put('/utilisateur/update/{id}',[UtilisateurController::class,"update"]);
 
 Route::group(['middleware'=>['auth:sanctum']],function(){
 
-    //
-
-    Route::get('/utilisateur/index',[UtilisateurController::class,"index"]);
+    //Afficher tout les utilisateurs
+    Route::get('/utilisateur/index/{id}',[UtilisateurController::class,"index"]);
     //
 
     Route::get('/utilisateur/logout', [UtilisateurController::class, 'logout']);

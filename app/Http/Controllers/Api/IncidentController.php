@@ -5,13 +5,18 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Incident;
+use Illuminate\Support\Facades\Auth;
+use App\Models\PrioriteIncident;
+use App\Models\StatuIncident;
+use App\Http\Controllers\Api\StatutIncidentController;
+use App\Http\Controllers\Api\pIncident;
+
 
 class IncidentController extends Controller
 {
     public function index()
     {
         $incident=  Incident::all();
-
         return response()->json([
             'incidents'=> $incident,
             'status'=>200
